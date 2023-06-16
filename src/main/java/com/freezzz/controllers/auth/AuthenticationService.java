@@ -17,7 +17,8 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    public AuthenticationResponse register(RegisterRequest request){
+
+    public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
                 .name(request.getName())
                 .login(request.getLogin())
@@ -40,7 +41,11 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = repository.
-        return null;
+        var user = repository.findByLogin(request.getLogin())
+                .orElseThrow();
+        var jwtToken = jwtService.generateToken(user);
+        return AuthenticationResponse.builder()
+                .token(jwtToken)
+                .build();
     }
 }
