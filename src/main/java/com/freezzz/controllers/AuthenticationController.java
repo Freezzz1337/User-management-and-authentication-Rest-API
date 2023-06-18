@@ -1,5 +1,9 @@
-package com.freezzz.controllers.auth;
+package com.freezzz.controllers;
 
+import com.freezzz.controllers.auth.AuthenticationRequest;
+import com.freezzz.controllers.auth.AuthenticationResponse;
+import com.freezzz.controllers.auth.AuthenticationService;
+import com.freezzz.controllers.auth.RegisterRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
