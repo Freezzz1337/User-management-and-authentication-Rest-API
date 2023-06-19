@@ -1,6 +1,6 @@
-package com.freezzz.auth;
+package com.freezzz.service;
 
-import com.freezzz.config.JwtService;
+import com.freezzz.auth.AuthenticationResponse;
 import com.freezzz.dto.AuthenticationRequestDTO;
 import com.freezzz.dto.RegisterRequestDTO;
 import com.freezzz.models.Role;
