@@ -1,4 +1,4 @@
-package com.freezzz.controllers.auth;
+package com.freezzz.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,11 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegisterRequest {
-    private String name;
-    private int age;
+public class AuthenticationRequestDTO {
     private String login;
-    private String email;
     private String password;
-
 }

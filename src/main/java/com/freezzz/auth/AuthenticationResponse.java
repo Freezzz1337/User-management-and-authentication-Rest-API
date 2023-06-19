@@ -1,4 +1,4 @@
-package com.freezzz.controllers.auth;
+package com.freezzz.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

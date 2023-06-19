@@ -1,9 +1,9 @@
 package com.freezzz.controllers;
 
-import com.freezzz.controllers.auth.AuthenticationRequest;
-import com.freezzz.controllers.auth.AuthenticationResponse;
-import com.freezzz.controllers.auth.AuthenticationService;
-import com.freezzz.controllers.auth.RegisterRequest;
+import com.freezzz.dto.AuthenticationRequestDTO;
+import com.freezzz.auth.AuthenticationResponse;
+import com.freezzz.auth.AuthenticationService;
+import com.freezzz.dto.RegisterRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthenticationController {
 
@@ -20,14 +20,14 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody RegisterRequest request
+            @RequestBody RegisterRequestDTO request
     ) {
         return ResponseEntity.ok(service.register(request));
     }
 
     @PostMapping("/authenticate")
     public ResponseEntity<AuthenticationResponse> register(
-            @RequestBody AuthenticationRequest request
+            @RequestBody AuthenticationRequestDTO request
     ) {
         return ResponseEntity.ok(service.authenticate(request));
     }

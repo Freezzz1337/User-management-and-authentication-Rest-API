@@ -1,6 +1,8 @@
-package com.freezzz.controllers.auth;
+package com.freezzz.auth;
 
 import com.freezzz.config.JwtService;
+import com.freezzz.dto.AuthenticationRequestDTO;
+import com.freezzz.dto.RegisterRequestDTO;
 import com.freezzz.models.Role;
 import com.freezzz.models.User;
 import com.freezzz.repository.UserRepository;
@@ -18,7 +20,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public AuthenticationResponse register(RegisterRequestDTO request) {
         var user = User.builder()
                 .name(request.getName())
                 .login(request.getLogin())
@@ -34,7 +36,7 @@ public class AuthenticationService {
                 .build();
     }
 
-    public AuthenticationResponse authenticate(AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequestDTO request) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getLogin(),
