@@ -1,4 +1,4 @@
-package com.freezzz.service;
+package com.freezzz.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

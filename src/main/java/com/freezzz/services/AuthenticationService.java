@@ -1,4 +1,4 @@
-package com.freezzz.service;
+package com.freezzz.services;
 
 import com.freezzz.auth.AuthenticationResponse;
 import com.freezzz.dto.AuthenticationRequestDTO;

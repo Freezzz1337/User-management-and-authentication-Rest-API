@@ -2,7 +2,7 @@ package com.freezzz.controllers;
 
 import com.freezzz.dto.AuthenticationRequestDTO;
 import com.freezzz.auth.AuthenticationResponse;
-import com.freezzz.service.AuthenticationService;
+import com.freezzz.services.AuthenticationService;
 import com.freezzz.dto.RegisterRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
