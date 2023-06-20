@@ -4,12 +4,12 @@ import com.freezzz.dto.AuthenticationRequestDTO;
 import com.freezzz.auth.AuthenticationResponse;
 import com.freezzz.services.AuthenticationService;
 import com.freezzz.dto.RegisterRequestDTO;
+import com.freezzz.util.AuthenticationAndRegistrationErrorResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -24,9 +24,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequestDTO request) {
+    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody AuthenticationRequestDTO request) {
         return ResponseEntity.ok(service.authenticate(request));
     }
 
-
+    
 }
