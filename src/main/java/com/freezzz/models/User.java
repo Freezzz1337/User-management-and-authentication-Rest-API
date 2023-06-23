@@ -1,6 +1,10 @@
 package com.freezzz.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,19 +29,26 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
+    @NotBlank(message = "name field must not be empty")
     @Column(name = "name")
     private String name;
 
+    @NotNull(message = "age field must not be empty")
     @Column(name = "age")
     private int age;
 
+    @NotBlank(message = "login field must not be empty")
+    @Size(min = 6, max = 30, message = "login must be at least 3 characters and not more than 30")
     @Column(name = "login")
     private String login;
 
+    @NotBlank(message = "email field must not be empty")
+    @Email
     @Column(name = "email")
     private String email;
 
+    @NotBlank(message = "password field must not be empty")
+    @Size(min = 8, max = 50, message = "password must be at least 8 characters and not more than 50")
     @Column(name = "password")
     private String password;
 
