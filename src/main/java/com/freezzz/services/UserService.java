@@ -14,7 +14,7 @@ public class UserService {
     }
 
     public boolean userLoginVerificationAuthentication(String login){
-        return userRepository.findByLogin(login).isEmpty();
+        return userRepository.findByLogin(login).isPresent();
     }
 
 
