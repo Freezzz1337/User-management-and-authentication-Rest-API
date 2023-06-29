@@ -35,7 +35,7 @@ public class AuthenticationController {
         if (userService.userLoginVerificationAuthentication(request.getLogin())) {
             throw new LoginNotFoundException();
         }
-
+        
         return ResponseEntity.ok(service.authenticate(request));
     }
 
