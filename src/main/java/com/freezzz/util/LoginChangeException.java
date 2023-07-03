@@ -1,3 +1,3 @@
 package com.freezzz.util;
 
-public class LoginChangeException extends Exception{ }
+public class LoginChangeException extends Exception{}

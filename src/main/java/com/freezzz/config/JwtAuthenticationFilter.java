@@ -1,7 +1,6 @@
 package com.freezzz.config;
 
 import com.freezzz.services.JwtService;
-import io.jsonwebtoken.JwtParser;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

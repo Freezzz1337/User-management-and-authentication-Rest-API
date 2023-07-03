@@ -1,14 +1,11 @@
 package com.freezzz.controllers;
 
-
 import com.freezzz.config.JwtAuthenticationFilter;
-import com.freezzz.dto.AuthenticationRequestDTO;
 import com.freezzz.dto.UserCredentialInfoDto;
 import com.freezzz.dto.UserWithoutPasswordDTO;
 import com.freezzz.models.User;
 import com.freezzz.services.UserService;
 import com.freezzz.util.LoginChangeException;
-import com.freezzz.util.LoginNotFoundException;
 import com.freezzz.util.PasswordChangeException;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
