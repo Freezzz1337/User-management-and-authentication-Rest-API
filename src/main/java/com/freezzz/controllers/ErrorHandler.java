@@ -1,7 +1,9 @@
 package com.freezzz.controllers;
 
 import com.freezzz.util.AuthenticationAndRegistrationErrorResponse;
+import com.freezzz.util.LoginChangeException;
 import com.freezzz.util.LoginNotFoundException;
+import com.freezzz.util.PasswordChangeException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +42,24 @@ public class ErrorHandler {
     public ResponseEntity<AuthenticationAndRegistrationErrorResponse> handleException(BadCredentialsException ex) {
         AuthenticationAndRegistrationErrorResponse errorResponse = new AuthenticationAndRegistrationErrorResponse(
                 "Password entered incorrectly",
+                System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<AuthenticationAndRegistrationErrorResponse> handleException(LoginChangeException ex){
+        AuthenticationAndRegistrationErrorResponse errorResponse = new AuthenticationAndRegistrationErrorResponse(
+                "The login must be different from the previous one",
+                System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<AuthenticationAndRegistrationErrorResponse> handleException(PasswordChangeException ex){
+        AuthenticationAndRegistrationErrorResponse errorResponse = new AuthenticationAndRegistrationErrorResponse(
+                "The password must be different from the previous one",
                 System.currentTimeMillis()
         );
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);

@@ -1,3 +1,5 @@
 package com.freezzz.util;
 
-public class LoginNotFoundException extends Exception{}
+public class LoginNotFoundException extends Exception{
+
+}
