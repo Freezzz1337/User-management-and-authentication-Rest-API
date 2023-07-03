@@ -5,6 +5,8 @@ import com.freezzz.auth.AuthenticationResponse;
 import com.freezzz.services.AuthenticationService;
 import com.freezzz.dto.RegisterRequestDTO;
 import com.freezzz.services.UserService;
+import com.freezzz.util.EmailAlreadyExistsException;
+import com.freezzz.util.LoginAlreadyExistsException;
 import com.freezzz.util.LoginNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody RegisterRequestDTO request) {
+    public ResponseEntity<AuthenticationResponse> register(@Valid @RequestBody RegisterRequestDTO request) throws LoginAlreadyExistsException, EmailAlreadyExistsException {
         return ResponseEntity.ok(service.register(request));
     }
 

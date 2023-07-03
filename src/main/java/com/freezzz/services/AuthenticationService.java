@@ -6,6 +6,8 @@ import com.freezzz.dto.RegisterRequestDTO;
 import com.freezzz.models.Role;
 import com.freezzz.models.User;
 import com.freezzz.repository.UserRepository;
+import com.freezzz.util.EmailAlreadyExistsException;
+import com.freezzz.util.LoginAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,7 +22,14 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequestDTO request) {
+    public AuthenticationResponse register(RegisterRequestDTO request) throws LoginAlreadyExistsException, EmailAlreadyExistsException {
+
+        if (repository.findByLogin(request.getLogin()).isPresent())
+            throw new LoginAlreadyExistsException();
+        if (repository.findByEmail(request.getEmail()).isPresent())
+            throw new EmailAlreadyExistsException();
+
+
         var user = User.builder()
                 .name(request.getName())
                 .login(request.getLogin())

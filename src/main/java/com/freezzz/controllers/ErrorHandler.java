@@ -1,9 +1,6 @@
 package com.freezzz.controllers;
 
-import com.freezzz.util.AuthenticationAndRegistrationErrorResponse;
-import com.freezzz.util.LoginChangeException;
-import com.freezzz.util.LoginNotFoundException;
-import com.freezzz.util.PasswordChangeException;
+import com.freezzz.util.*;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +50,7 @@ public class ErrorHandler {
                 "The login must be different from the previous one",
                 System.currentTimeMillis()
         );
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler
@@ -62,7 +59,23 @@ public class ErrorHandler {
                 "The password must be different from the previous one",
                 System.currentTimeMillis()
         );
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<AuthenticationAndRegistrationErrorResponse> handleException(LoginAlreadyExistsException ex){
+        AuthenticationAndRegistrationErrorResponse errorResponse = new AuthenticationAndRegistrationErrorResponse(
+                "User with this login already exists",
+                System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler
+    public ResponseEntity<AuthenticationAndRegistrationErrorResponse> handleException(EmailAlreadyExistsException ex){
+        AuthenticationAndRegistrationErrorResponse errorResponse = new AuthenticationAndRegistrationErrorResponse(
+                "User with this email already exists",
+                System.currentTimeMillis()
+        );
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
 }
